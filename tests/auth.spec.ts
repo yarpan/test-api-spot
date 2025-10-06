@@ -28,7 +28,7 @@ test("get token, should be valid", async ({ request }) => {
   expect(token).toBeDefined();
 });
 
-// not working because Spotify will suspend account very quickly
+// not working because Spotify will suspend account
 test.skip("get auth", async ({ page }) => {
   await page.goto(
     `https://accounts.spotify.com/en/login?login_hint=${process.env.EMAIL}&allow_password=1`
@@ -41,8 +41,4 @@ test.skip("get auth", async ({ page }) => {
 
   await page.getByTestId("login-password").fill(process.env.PASSWORD!);
   await page.getByTestId("login-button").click({ delay: 1000 });
-  // const url = generateAuthUrl();
-
-  // const response = await page.goto(url);
-  // const token = await page.locator("").textContent();
 });

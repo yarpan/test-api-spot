@@ -1,8 +1,5 @@
 import { test as base, expect, request } from "@playwright/test";
-import fs from "fs";
-import path from "path";
-import { APIClient } from "../apps/APIClient";
-import { Auth } from "../apps/controllers/Auth";
+import { APIClient } from "../app/APIClient";
 import { SpotifyTokenResponse, TokenHelper } from "./TokenHelper";
 
 type Fixtures = {

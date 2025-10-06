@@ -1,10 +1,10 @@
 import { APIRequestContext } from "playwright";
-import { Auth } from "../apps/controllers/Auth";
+import { Auth } from "../app/controllers/Auth";
 import fs from "fs";
 
 export const SPOTIFY_CONFIG = {
   TOKEN_FILE_PATH: "tokens.json",
-  TOKEN_BUFFER_TIME: 300, // 5 minutes buffer before expiration
+  TOKEN_BUFFER_TIME: 300,
   AUTH_URL: "https://accounts.spotify.com/api/token",
 } as const;
 
@@ -43,7 +43,7 @@ export class TokenHelper {
   }
 
   static isTokenExpired(tokens: SpotifyTokenResponse): boolean {
-    const currentTime = Date.now() / 1000; // Convert to seconds
+    const currentTime = Date.now() / 1000;
     const expirationWithBuffer =
       tokens.expirationDate - SPOTIFY_CONFIG.TOKEN_BUFFER_TIME;
     return currentTime >= expirationWithBuffer;
